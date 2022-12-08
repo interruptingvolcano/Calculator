@@ -207,6 +207,41 @@ minus.addEventListener('click', ()=> {
   }
 });
 
+times.addEventListener('click', ()=> {
+  numbers = [];
+  if (operators.length > 0) {
+    console.log(operators);
+    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+    operators = [];
+    firstNumbers = display.value;
+    operators.push('*');
+    
+  } else {
+    numbers = [];
+    operators.push('*');
+  }
+});
+
+into.addEventListener('click', ()=> {
+  numbers = [];
+  if (operators.length > 0) {
+    console.log(operators);
+    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+    operators = [];
+    firstNumbers = display.value;
+    operators.push('/');
+    
+  } else {
+    numbers = [];
+    operators.push('/');
+  }
+});
+
+equals.addEventListener('click', ()=> {
+  display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+});
+
+//need to make decimal work and round numbers
 
   
  

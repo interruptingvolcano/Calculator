@@ -44,6 +44,8 @@ function operate(a, b, c) {
   let times = document.querySelector('.times');
   let into = document.querySelector('.into');
   let equals = document.querySelector('.equals');
+  let decimal = document.querySelector('.decimal');
+  let clear = document.querySelector('.clear');
 
   let display = document.querySelector('.display');
 
@@ -240,6 +242,24 @@ into.addEventListener('click', ()=> {
 equals.addEventListener('click', ()=> {
   display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
 });
+
+decimal.addEventListener('click', ()=> {
+  if (operators.length === 0) {
+    numbers.push('.');
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push('.');
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
+
+clear.addEventListener('click', ()=> {
+  location.reload();
+})
+
+
 
 //need to make decimal work and round numbers
 

@@ -47,168 +47,166 @@ function operate(a, b, c) {
 
   let display = document.querySelector('.display');
 
-  let numbers = [];
-  let firstNumber = [];
-  let secondNumber = [];
-  let operators = [];
-  let equalsArray = [];
+let numbers = [];
+let firstNumbers = []
+let operators = [];
+let nextNumbers = [];
 
-
-  
-  one.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(1);
-    }
+one.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(1);
-    display.value = numbers.join('');
-    });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+    //this is the number before the first operator, need to change it to a number in operation
+  } else if (operators.length > 0) {
+    numbers.push(1);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  two.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(2);
-    }
+two.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(2);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(2);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  three.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(3);
-    }
+three.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(3);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(3);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  four.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(4);
-    }
+four.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(4);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(4);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  five.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(5);
-    }
+five.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(5);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(5);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  six.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(6);
-    }
+six.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(6);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(6);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  seven.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(7);
-    }
+seven.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(7);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(7);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  eight.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(8);
-    }
+eight.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(8);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(8);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  nine.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(9);
-    }
+nine.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(9);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(9);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
-  zero.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      secondNumber.push(0);
-    }
+zero.addEventListener('click', ()=> {
+  if (operators.length === 0) {
     numbers.push(0);
-    display.value = numbers.join('');
-  });
+    firstNumbers = numbers.join('');
+    display.value = firstNumbers;
+  } else if (operators.length > 0) {
+    numbers.push(0);
+    nextNumbers = numbers.join('');
+    display.value = nextNumbers;
+  }
+});
 
 
-  plus.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      console.log(firstNumber);
-      console.log(secondNumber);
-      firstNumber = Number(firstNumber);
-      secondNumber = Number(secondNumber);
-      display.value = operate(firstNumber, operators.join(), secondNumber);
-      
-      secondNumber = [];
-      console.log(nextNumbers() + firstNumber);
-    }
-    firstNumber = numbers.splice(0).join('');
+
+plus.addEventListener('click', ()=> {
+  numbers = [];
+  if (operators.length > 0) {
+    console.log(operators);
+    console.log(firstNumbers);
+    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+    operators = [];
+    firstNumbers = display.value; //this operators should be what's in the operators array at the moment
     operators.push('+');
+    console.log(firstNumbers);
     
-  });
+  } else {
+    numbers = [];
+    operators.push('+');
+  }
+});
 
-  minus.addEventListener('click', ()=> {
-    firstNumber = numbers.splice(0).join('');
+minus.addEventListener('click', ()=> {
+  numbers = [];
+  if (operators.length > 0) {
+    console.log(operators);
+    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+    operators = [];
+    firstNumbers = display.value;
     operators.push('-');
-  });
-
-  times.addEventListener('click', ()=> {
-    firstNumber = numbers.splice(0).join('');
-    operators.push('*');
-  });
-
-  into.addEventListener('click', ()=> {
-    firstNumber = numbers.splice(0).join('');
-    operators.push('/');
-  });
-
-
-
-  equals.addEventListener('click', ()=> {
-    if (operators.length > 0) {
-      firstNumber = Number(firstNumber);
-      secondNumber = Number(secondNumber.join(''));
-      display.value = operate(firstNumber, operators.join(), secondNumber);
-      equalsArray.push(1);
-      operators = [];
-      
-    };
     
-  });
-
-
-  function nextNumbers() {
-    return numbers.reduce((total, firstNumber) => total + operate(total, operators.join(), firstNumber), 0)
-
-    
-    
-  };
-// when I click on a second operator, e.g., 1 + 2 * 4, that click should return a value like equals.
+  } else {
+    numbers = [];
+    operators.push('-');
+  }
+});
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

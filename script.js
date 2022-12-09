@@ -50,10 +50,10 @@ function operate(a, b, c) {
 
   let display = document.querySelector('.display');
 
-let numbers = [];
-let firstNumbers = []
-let operators = [];
-let nextNumbers = [];
+  let numbers = [];
+  let firstNumbers = []
+  let operators = [];
+  let nextNumbers = [];
 
 
 one.addEventListener('click', ()=> {
@@ -174,12 +174,9 @@ zero.addEventListener('click', ()=> {
   } else if (operators.length > 0) {
     numbers.push(0);
     nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-        
+    display.value = nextNumbers;  
     };
-
 });
-
 
 plus.addEventListener('click', ()=> {
   numbers = [];
@@ -210,6 +207,7 @@ minus.addEventListener('click', ()=> {
 });
 
 times.addEventListener('click', ()=> {
+  numbers = [];
   if (operators.length > 0) {
     display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
     operators = [];
@@ -239,7 +237,6 @@ into.addEventListener('click', ()=> {
 equals.addEventListener('click', ()=> {
   numbers = [];
   testNum = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
-  console.log(firstNumbers);
   if (firstNumbers === '0' && operators[0] === '/' && nextNumbers === '0') {
     display.value = 'Computer says NO'
     operators = [];
@@ -248,6 +245,7 @@ equals.addEventListener('click', ()=> {
   else if (Number.isInteger(testNum)) {
     display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
     operators = [];
+    
   } else {
     display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toFixed(2);
     operators = [];
@@ -277,7 +275,6 @@ clear.addEventListener('click', ()=> {
 
 
 
-//need to make decimal work and round numbers
 
   
  

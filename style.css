@@ -18,7 +18,7 @@ body {
 .flex-container {
   display: flex;
   border: solid teal 10px;
-  width: 340px;
+  width: 350px;
   height: 660px;
   margin-top: 40px;
   justify-content: center;
@@ -34,18 +34,18 @@ body {
 }
 
 .display {
-  font-size: 30px;
+  font-size: 23px;
   font-family:'Courier New', Courier, monospace;
-  color: gray;
+  color: rgb(250, 251, 248);
   text-align: left;
   margin-top: 20px;
-  height: 80px;
+  margin-bottom: -20px;
+  height: 78px;
   width: 60px;
   flex: 1;
+  border: solid rgb(18, 43, 46);
   border-radius: 15px;
-  background-color: whitesmoke;
-  border: solid rgb(237, 239, 235) 3px;
-}
+  background-color: rgb(18, 43, 46);}
 
 .buttons {
   margin-top: 30px;
@@ -55,7 +55,7 @@ body {
 
 .one {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -75,7 +75,7 @@ body {
 
 .two {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -94,7 +94,7 @@ body {
 
 .three {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -118,7 +118,7 @@ body {
 
 .four {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -137,7 +137,7 @@ body {
 
 .five {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -156,7 +156,7 @@ body {
 
 .six {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -179,7 +179,7 @@ body {
 
 .seven {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -198,7 +198,7 @@ body {
 
 .eight {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -217,7 +217,7 @@ body {
 
 .nine {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -240,7 +240,7 @@ body {
 
 .zero {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(220, 244, 218);
   width: 70px;
   height: 70px;
@@ -259,7 +259,7 @@ body {
 
 .plus {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   
   width: 70px;
   height: 70px;
@@ -277,7 +277,7 @@ body {
 
 .minus {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   width: 70px;
   height: 70px;
   border-radius: 50px;
@@ -298,12 +298,11 @@ body {
 
 .times {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   width: 70px;
   height: 70px;
   border-radius: 50px;
   margin-right: 10px;
-  line-height: 75px;
   border: solid rgb(246, 246, 176);
   transition: all 0.2s;
 
@@ -316,12 +315,11 @@ body {
 
 .into {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   width: 70px;
   height: 70px;
   border-radius: 50px;
   margin-right: 10px;
-  line-height: 75px;
   border: solid rgb(246, 246, 176);
   transition: all 0.2s;
 
@@ -334,11 +332,11 @@ body {
 
 .decimal {
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  line-height: 75px;
+  margin-right: 10px;
   border: solid rgb(246, 246, 176);
   transition: all 0.2s;
 

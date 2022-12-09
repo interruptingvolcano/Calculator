@@ -47,12 +47,14 @@ function operate(a, b, c) {
   let decimal = document.querySelector('.decimal');
   let clear = document.querySelector('.clear');
 
+
   let display = document.querySelector('.display');
 
 let numbers = [];
 let firstNumbers = []
 let operators = [];
 let nextNumbers = [];
+
 
 one.addEventListener('click', ()=> {
   if (operators.length === 0) {
@@ -168,25 +170,24 @@ zero.addEventListener('click', ()=> {
     numbers.push(0);
     firstNumbers = numbers.join('');
     display.value = firstNumbers;
+
   } else if (operators.length > 0) {
     numbers.push(0);
     nextNumbers = numbers.join('');
     display.value = nextNumbers;
-  }
-});
+        
+    };
 
+});
 
 
 plus.addEventListener('click', ()=> {
   numbers = [];
   if (operators.length > 0) {
-    console.log(operators);
-    console.log(firstNumbers);
     display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
     operators = [];
-    firstNumbers = display.value; //this operators should be what's in the operators array at the moment
+    firstNumbers = display.value; 
     operators.push('+');
-    console.log(firstNumbers);
     
   } else {
     numbers = [];
@@ -197,7 +198,6 @@ plus.addEventListener('click', ()=> {
 minus.addEventListener('click', ()=> {
   numbers = [];
   if (operators.length > 0) {
-    console.log(operators);
     display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
     operators = [];
     firstNumbers = display.value;
@@ -210,9 +210,7 @@ minus.addEventListener('click', ()=> {
 });
 
 times.addEventListener('click', ()=> {
-  numbers = [];
   if (operators.length > 0) {
-    console.log(operators);
     display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
     operators = [];
     firstNumbers = display.value;
@@ -227,7 +225,6 @@ times.addEventListener('click', ()=> {
 into.addEventListener('click', ()=> {
   numbers = [];
   if (operators.length > 0) {
-    console.log(operators);
     display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
     operators = [];
     firstNumbers = display.value;
@@ -240,7 +237,22 @@ into.addEventListener('click', ()=> {
 });
 
 equals.addEventListener('click', ()=> {
-  display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+  numbers = [];
+  testNum = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
+  console.log(firstNumbers);
+  if (firstNumbers === '0' && operators[0] === '/' && nextNumbers === '0') {
+    display.value = 'Computer says NO'
+    operators = [];
+    
+  }
+  else if (Number.isInteger(testNum)) {
+    display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
+    operators = [];
+  } else {
+    display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toFixed(2);
+    operators = [];
+  }
+  
 });
 
 decimal.addEventListener('click', ()=> {
@@ -249,7 +261,11 @@ decimal.addEventListener('click', ()=> {
     firstNumbers = numbers.join('');
     display.value = firstNumbers;
   } else if (operators.length > 0) {
-    numbers.push('.');
+    if (nextNumbers.length === 0) {
+      numbers.push('0.')
+    } else {
+      numbers.push('.');
+    }
     nextNumbers = numbers.join('');
     display.value = nextNumbers;
   }

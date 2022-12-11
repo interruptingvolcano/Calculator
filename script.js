@@ -46,6 +46,7 @@ function operate(a, b, c) {
   let equals = document.querySelector('.equals');
   let decimal = document.querySelector('.decimal');
   let clear = document.querySelector('.clear');
+  let bSpace = document.querySelector('.backspace');
 
 
   let display = document.querySelector('.display');
@@ -54,185 +55,122 @@ function operate(a, b, c) {
   let firstNumbers = []
   let operators = [];
   let nextNumbers = [];
-
-
-one.addEventListener('click', ()=> {
+  let testContainer = [];
+  let decimals = [];
+  
+function clickNumbers(number) {
+  testContainer = [];
   if (operators.length === 0) {
-    numbers.push(1);
+    numbers.push(number);
     firstNumbers = numbers.join('');
     display.value = firstNumbers;
-    //this is the number before the first operator, need to change it to a number in operation
+  
   } else if (operators.length > 0) {
-    numbers.push(1);
+    numbers.push(number);
     nextNumbers = numbers.join('');
     display.value = nextNumbers;
-  }
+  };
+};
+
+one.addEventListener('click', ()=> {
+  clickNumbers(1);
 });
 
 two.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(2);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(2);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(2);
 });
 
 three.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(3);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(3);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(3);
 });
 
 four.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(4);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(4);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(4);
 });
 
 five.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(5);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(5);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(5);
 });
 
 six.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(6);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(6);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(6);
 });
 
 seven.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(7);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(7);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(7);
 });
 
 eight.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(8);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(8);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(8);
 });
 
 nine.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(9);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-  } else if (operators.length > 0) {
-    numbers.push(9);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;
-  }
+  clickNumbers(9);
 });
 
 zero.addEventListener('click', ()=> {
-  if (operators.length === 0) {
-    numbers.push(0);
-    firstNumbers = numbers.join('');
-    display.value = firstNumbers;
-
-  } else if (operators.length > 0) {
-    numbers.push(0);
-    nextNumbers = numbers.join('');
-    display.value = nextNumbers;  
-    };
+  clickNumbers(0);
 });
 
-plus.addEventListener('click', ()=> {
+//this function tests for long decimal and rounds
+function roundNumbers() {
+  let testNumbers = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toString();
+      
+  if ((testNumbers.length - testNumbers.indexOf('.')-1) > 7) {
+    display.value = Number(testNumbers).toFixed(7);
+} else {
+    display.value = Number(testNumbers);
+  }
+};
+
+function testContainerCheck() {
+  if (testContainer.length > 0) {
+    return true;
+  }
+}
+
+function clickOperators(operator) {
+  console.log(testContainer.length);
+  if (testContainerCheck()) {
+    return;
+  }
+  testContainer.push(operator);
   numbers = [];
   if (operators.length > 0) {
-    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
+    decimals = [];
+    roundNumbers();
     operators = [];
     firstNumbers = display.value; 
-    operators.push('+');
-    
+    operators.push(operator);   
   } else {
+    decimals = [];
     numbers = [];
-    operators.push('+');
-  }
+    operators.push(operator);
+  };
+  if (display.value === 'NaN' || display.value === 'undefined') {
+    location.reload();
+  }; 
+
+};
+
+plus.addEventListener('click', ()=> {
+  clickOperators('+');
+  
 });
 
 minus.addEventListener('click', ()=> {
-  numbers = [];
-  if (operators.length > 0) {
-    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
-    operators = [];
-    firstNumbers = display.value;
-    operators.push('-');
-    
-  } else {
-    numbers = [];
-    operators.push('-');
-  }
+  clickOperators('-');
 });
 
+
 times.addEventListener('click', ()=> {
-  numbers = [];
-  if (operators.length > 0) {
-    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
-    operators = [];
-    firstNumbers = display.value;
-    operators.push('*');
-    
-  } else {
-    numbers = [];
-    operators.push('*');
-  }
+  clickOperators('*');
 });
 
 into.addEventListener('click', ()=> {
-  numbers = [];
-  if (operators.length > 0) {
-    display.value = operate(Number(firstNumbers), operators[0], Number(nextNumbers));
-    operators = [];
-    firstNumbers = display.value;
-    operators.push('/');
-    
-  } else {
-    numbers = [];
-    operators.push('/');
-  }
+  clickOperators('/');
 });
+
 
 equals.addEventListener('click', ()=> {
   numbers = [];
@@ -240,20 +178,27 @@ equals.addEventListener('click', ()=> {
   if (firstNumbers === '0' && operators[0] === '/' && nextNumbers === '0') {
     display.value = 'Computer says NO'
     operators = [];
-    
-  }
-  else if (Number.isInteger(testNum)) {
+    firstNumbers = display.value; 
+  } else if (Number.isInteger(testNum)) {
     display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
     operators = [];
-    
+    firstNumbers = display.value;
   } else {
     display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toFixed(2);
     operators = [];
-  }
-  
+    firstNumbers = display.value;    
+    if (display.value === 'NaN' || display.value === 'undefined') {
+    display.value = 0;
+    };
+  };
 });
 
+
 decimal.addEventListener('click', ()=> {
+  decimals.push('.');
+  if (decimals.length > 1) {
+    return;
+  }
   if (operators.length === 0) {
     numbers.push('.');
     firstNumbers = numbers.join('');
@@ -272,9 +217,24 @@ decimal.addEventListener('click', ()=> {
 clear.addEventListener('click', ()=> {
   location.reload();
 })
-
-
-
-
   
- 
+function backspace() {
+  display.value = display.value.toString().slice(0, -1);
+  numbers = [display.value];
+  if (operators.length === 0) {
+    firstNumbers = [display.value];
+  } else {
+    nextNumbers = [display.value];
+  }
+  
+  return display.value;
+};
+
+bSpace.addEventListener('click', ()=> {
+  if (display.value.length === 1) {
+    location.reload();
+  } else {
+    backspace();
+  };
+});
+

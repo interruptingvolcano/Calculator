@@ -385,6 +385,22 @@ body {
   background-color: rgb(113, 113, 189); 
 }
 
+.backspace {
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: rgb(219, 145, 237);
+  flex-basis: 50%;
+  border-radius: 60px;
+  margin-left: 5px;
+  border: solid rgb(246, 246, 176);
+  transition: all 0.2s;
+}
+
+.backspace:hover {
+  color: white;
+  background-color: rgb(113, 113, 189); 
+}
+
 .bottom-texture {
   text-align: center;
   color: rgb(246, 246, 176);

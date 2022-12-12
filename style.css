@@ -356,7 +356,7 @@ body {
   font-size: 40px;
   font-family: 'Times New Roman', Times, serif;
   background-color: rgb(73, 231, 86);
-  flex-basis: 50%;
+  flex-basis: 40%;
   border-radius: 50px;
   margin-left: 2px;
   border: solid rgb(246, 246, 176);
@@ -373,7 +373,7 @@ body {
   font-size: 30px;
   font-family: 'Times New Roman', Times, serif;
   background-color: rgb(219, 145, 237);
-  flex-basis: 50%;
+  flex-basis: 30%;
   border-radius: 60px;
   margin-left: 5px;
   border: solid rgb(246, 246, 176);
@@ -389,11 +389,12 @@ body {
   font-size: 30px;
   font-family: 'Times New Roman', Times, serif;
   background-color: rgb(219, 145, 237);
-  flex-basis: 50%;
+  flex-basis: 30%;
   border-radius: 60px;
   margin-left: 5px;
   border: solid rgb(246, 246, 176);
   transition: all 0.2s;
+  margin-right: 10px;
 }
 
 .backspace:hover {

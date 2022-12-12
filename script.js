@@ -48,7 +48,6 @@ function operate(a, b, c) {
   let clear = document.querySelector('.clear');
   let bSpace = document.querySelector('.backspace');
 
-
   let display = document.querySelector('.display');
 
   let numbers = [];
@@ -57,9 +56,13 @@ function operate(a, b, c) {
   let nextNumbers = [];
   let testContainer = [];
   let decimals = [];
+  let equalsCount = [];
+ 
   
 function clickNumbers(number) {
+  equalsCount = [];
   testContainer = [];
+
   if (operators.length === 0) {
     numbers.push(number);
     firstNumbers = numbers.join('');
@@ -70,6 +73,8 @@ function clickNumbers(number) {
     nextNumbers = numbers.join('');
     display.value = nextNumbers;
   };
+  zero.removeAttribute('disabled', 'disabled');
+
 };
 
 one.addEventListener('click', ()=> {
@@ -110,6 +115,7 @@ nine.addEventListener('click', ()=> {
 
 zero.addEventListener('click', ()=> {
   clickNumbers(0);
+  zero.setAttribute('disabled', 'disabled');
 });
 
 //this function tests for long decimal and rounds
@@ -117,40 +123,41 @@ function roundNumbers() {
   let testNumbers = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toString();
       
   if ((testNumbers.length - testNumbers.indexOf('.')-1) > 7) {
-    display.value = Number(testNumbers).toFixed(7);
+    return display.value = Number(testNumbers).toFixed(7);
 } else {
-    display.value = Number(testNumbers);
-  }
+    return display.value = Number(testNumbers);
+  } 
 };
 
-function testContainerCheck() {
-  if (testContainer.length > 0) {
-    return true;
-  }
-}
-
-function clickOperators(operator) {
-  console.log(testContainer.length);
-  if (testContainerCheck()) {
-    return;
-  }
+function clickOperators(operator) { 
+operators = [];
+testContainer = [];
+console.log(testContainer.length);
+console.log(operators.length);
+  if (testContainer.length === 1 && operators.length === 0) {
+        return;
+      }
+  numbers = [];  
   testContainer.push(operator);
-  numbers = [];
-  if (operators.length > 0) {
+
+  if (operators.length > 0) {     
     decimals = [];
     roundNumbers();
     operators = [];
     firstNumbers = display.value; 
-    operators.push(operator);   
+    operators.push(operator);
+
   } else {
+    operators.push(operator);
     decimals = [];
     numbers = [];
-    operators.push(operator);
+    
+    
   };
   if (display.value === 'NaN' || display.value === 'undefined') {
     location.reload();
   }; 
-
+  zero.removeAttribute('disabled', 'disabled');
 };
 
 plus.addEventListener('click', ()=> {
@@ -173,23 +180,28 @@ into.addEventListener('click', ()=> {
 
 
 equals.addEventListener('click', ()=> {
+  equalsCount.push('=');
+  if (equalsCount.length > 1) {
+    return;
+  }
   numbers = [];
   testNum = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
-  if (firstNumbers === '0' && operators[0] === '/' && nextNumbers === '0') {
+    if (firstNumbers === '0' &&   operators[0] === '/' && nextNumbers === '0') {
     display.value = 'Computer says NO'
     operators = [];
     firstNumbers = display.value; 
-  } else if (Number.isInteger(testNum)) {
+    } else if (Number.isInteger(testNum)) {
     display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
     operators = [];
     firstNumbers = display.value;
-  } else {
-    display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers))).toFixed(2);
+    } else {
+    display.value = (operate(Number(firstNumbers), operators[0], Number(nextNumbers)));
     operators = [];
     firstNumbers = display.value;    
+        
+    };
     if (display.value === 'NaN' || display.value === 'undefined') {
     display.value = 0;
-    };
   };
 });
 

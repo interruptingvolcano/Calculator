@@ -1,408 +1,86 @@
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  background-color: whitesmoke;
-  height: 500px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(to left, white, rgb(178, 196, 239));
 }
 
-.content {
-  display: block;
-  align-content: center;
-}
-
-.flex-container {
-  display: flex;
-  border: solid teal 10px;
-  width: 350px;
-  height: 660px;
-  margin-top: 40px;
+.calculator-grid {
+  display: grid;
   justify-content: center;
-  border-radius: 20px;
-  background-color: rgb(18, 43, 46);
-  position: relative;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  
   
 }
 
-.display-input {
-  display: flex;
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  outline: none;
+  border: 2px solid white;
+  
+}
 
+.calculator-grid > button:hover {
+  background: rgba(204, 222, 237, 0.9);
+
+}
+
+.output {
+  grid-column: 1 / -1;
+  margin-top: 10px;
 }
 
 .display {
-  font-size: 25px;
-  font-family:'Courier New', Courier, monospace;
-  color: rgb(250, 251, 248);
-  text-align: left;
-  margin-top: 20px;
-  margin-bottom: -20px;
-  height: 78px;
-  width: 60px;
-  flex: 1;
-  border: solid rgb(18, 43, 46);
-  border-radius: 15px;
-  background-color: rgb(18, 43, 46);}
-
-.buttons {
-  margin-top: 30px;
-
-
-}
-
-.one {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-}
-
-.one:hover {
-  color: white;
-  background-color: teal;
- 
-}
-
-
-
-.two {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.two:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.three {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.three:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.row1 {
-  margin-bottom: 15px;
-  
-
-}
-
-.four {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.four:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.five {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.five:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.six {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-}
-
-.six:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.row2 {
-  margin-bottom: 15px;
-  
-
-}
-
-.seven {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.seven:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.eight {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.eight:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.nine {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.nine:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.row3 {
-  margin-bottom: 15px;
-
-}
-
-.zero {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(220, 244, 218);
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.zero:hover {
-  color: white;
-  background-color: teal;
-
-}
-
-.plus {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.plus:hover {
-  color: white;
-  background-color: rgb(235, 137, 91); 
-}
-
-.minus {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.minus:hover {
-  color: white;
-  background-color: rgb(235, 137, 91);
-}
-
-.row4 {
-  margin-bottom: 15px;
-
-}
-
-.times {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.times:hover {
-  color: white;
-  background-color: rgb(235, 137, 91);
-}
-
-.into {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.into:hover {
-  color: white;
-  background-color: rgb(235, 137, 91);
-}
-
-.decimal {
-  font-size: 40px;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  margin-right: 10px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-
-}
-
-.decimal:hover {
-  color: white;
-  background-color: rgb(91, 151, 235); 
-}
-
-.row6 {
-  margin-top: 20px;
+  font-size: 50px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 10px;
+  color:rgb(242, 247, 247);
+  border: 2px solid white;
+  background-color: black;
 }
 
-.equals {
+.span-2 {
+  grid-column: span 2;
   font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(73, 231, 86);
-  flex-basis: 40%;
-  border-radius: 50px;
-  margin-left: 2px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to left, white, rgb(239, 237, 178));
+
+  /* border-radius: 50px; */
+  /* margin-right: 10px; */
+  border: solid rgb(240, 240, 235);
+}
+
+
+.number {
+  font-size: 40px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to left, white, rgb(239, 237, 178));
+
+  /* border-radius: 50px; */
+  /* margin-right: 10px; */
+  border: solid rgb(240, 240, 235);
+}
+
+.operator {
+  font-size: 40px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to left, white, rgb(230, 218, 238));
+
+  /* border-radius: 50px; */
+  /* margin-right: 10px; */
   border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
 
 }
 
-.equals:hover {
-  color: white;
-  background-color: rgb(64, 140, 64); 
-}
-
-.clear {
-  font-size: 30px;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(219, 145, 237);
-  flex-basis: 30%;
-  border-radius: 60px;
-  margin-left: 5px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-}
-
-.clear:hover {
-  color: white;
-  background-color: rgb(113, 113, 189); 
-}
-
-.backspace {
-  font-size: 30px;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(219, 145, 237);
-  flex-basis: 30%;
-  border-radius: 60px;
-  margin-left: 5px;
-  border: solid rgb(246, 246, 176);
-  transition: all 0.2s;
-  margin-right: 10px;
-}
-
-.backspace:hover {
-  color: white;
-  background-color: rgb(113, 113, 189); 
-}
-
-.bottom-texture {
-  text-align: center;
-  color: rgb(246, 246, 176);
-}

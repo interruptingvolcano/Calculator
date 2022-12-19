@@ -35,10 +35,12 @@ body {
 .output {
   grid-column: 1 / -1;
   margin-top: 10px;
+  word-wrap: break-word;
+  word-wrap: break-all;
 }
 
 .display {
-  font-size: 50px;
+  font-size: 30px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100px;
   display: flex;
@@ -49,6 +51,7 @@ body {
   color:rgb(242, 247, 247);
   border: 2px solid white;
   background-color: black;
+  
 }
 
 .span-2 {

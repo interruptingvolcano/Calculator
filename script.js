@@ -14,8 +14,7 @@ class Calculator {
   };
 
   appendNumber(number) {
-    
-    if (number === '.' && this.firstNumber.includes('.') || this.firstNumber.length > 11) {
+    if (number === '.' && this.firstNumber.includes('.') || this.firstNumber.length > 14 || this.nextNumber.length > 14) {
       return;
     }
     if (this.operator === undefined) {
@@ -57,14 +56,14 @@ class Calculator {
         case '*':
           compute = first * next;
           break;
-        case '÷':
+        case '/':
           compute = first / next;
           break;
         default:
           return;
       }
       if (Number.isInteger(compute)) {
-        this.displayOutput.innerText = this.displayComma(compute);
+        this.displayOutput.innerText = this.displayComma(compute)
       } else {
         this.displayOutput.innerText = this.displayComma((compute).toFixed(2));
       };
@@ -110,7 +109,10 @@ class Calculator {
       this.displayOutput.innerText = this.displayComma(this.totalNumber);
     }; 
   };
+
 };
+
+
 
 
 
@@ -128,6 +130,7 @@ const displayOutput = document.querySelector('[data-display]');
 
 
 const calculator = new Calculator(displayOutput);
+
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -156,4 +159,35 @@ equalsButton.addEventListener('click', () => {
   calculator.compute();
 
   // calculator.updateDisplay();
-})
+});
+
+//Keyboard Support
+document.addEventListener('keyup', (event) => {
+  console.log(event.key);
+  if (event.key >= 0 && event.key <= 9 || event.key === '.') {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay(); 
+
+  } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') { 
+    if (event.key === '/') {
+      event.preventDefault();
+    }
+    calculator.chooseOperator(event.key);
+
+  } else if (event.key === '=') {
+    calculator.compute(event.key);
+    calculator.updateDisplay();
+
+  } else if (event.key === 'Backspace') {
+    calculator.delete(event.key);
+    calculator.updateDisplay();
+
+  } else if (event.key === 'Escape') {
+    calculator.clear(event.key);
+    calculator.updateDisplay();
+
+  } 
+
+  
+});
+

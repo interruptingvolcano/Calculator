@@ -32,7 +32,7 @@ class Calculator {
   chooseOperator(operator) {
     if (this.totalNumber === '') return;
     else if (this.totalNumber !== '') {
-      this.compute(); 
+        this.compute();    
     }
     this.firstNumber = '';
     this.operator = operator;
@@ -112,10 +112,6 @@ class Calculator {
 
 };
 
-
-
-
-
 const numberButtons = document.querySelectorAll('[data-number]');
 
 const operatorButtons = document.querySelectorAll('[data-operator]');
@@ -141,8 +137,7 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
   button.addEventListener('click', ()=> {
-    // calculator.updateDisplay();
-    calculator.chooseOperator(button.innerText);
+      calculator.chooseOperator(button.innerText);  
   })
 });
 
@@ -156,7 +151,12 @@ deleteButton.addEventListener('click', ()=> {
 });
 
 equalsButton.addEventListener('click', () => {
-  calculator.compute();
+  console.log(calculator.nextNumber);
+  if (calculator.nextNumber === '0' && calculator.operator === '/') {
+    displayOutput.innerText = 'Computer says NO';
+  } else {
+    calculator.compute()
+  };
 
   // calculator.updateDisplay();
 });

@@ -174,7 +174,7 @@ document.addEventListener('keyup', (event) => {
     }
     calculator.chooseOperator(event.key);
 
-  } else if (event.key === '=') {
+  } else if (event.key === '=' || event.key === 'Enter') {
     calculator.compute(event.key);
     calculator.updateDisplay();
 

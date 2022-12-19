@@ -25,8 +25,7 @@ class Calculator {
       if (number === '.' && this.nextNumber.includes('.'))
         return;
       this.nextNumber = this.nextNumber.toString() + number.toString(); 
-    };
-    
+    }; 
   };
   
   chooseOperator(operator) {
@@ -36,7 +35,6 @@ class Calculator {
     }
     this.firstNumber = '';
     this.operator = operator;
-
   };
 
   compute() {
@@ -69,7 +67,6 @@ class Calculator {
       };
     this.operator = undefined;  
     this.totalNumber = compute;
-    // this.firstNumber = '';
     this.nextNumber = '';
   };
 
@@ -78,10 +75,8 @@ class Calculator {
       this.totalNumber = this.totalNumber.toString().slice(0, -1);
     this.firstNumber = this.totalNumber;
     }
-    
     this.nextNumber = this.nextNumber.toString().slice(0, -1);
     console.log(this.nextNumber);
-
   };
 
   displayComma(number) {
@@ -109,7 +104,6 @@ class Calculator {
       this.displayOutput.innerText = this.displayComma(this.totalNumber);
     }; 
   };
-
 };
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -157,8 +151,6 @@ equalsButton.addEventListener('click', () => {
   } else {
     calculator.compute()
   };
-
-  // calculator.updateDisplay();
 });
 
 //Keyboard Support
@@ -185,9 +177,6 @@ document.addEventListener('keyup', (event) => {
   } else if (event.key === 'Escape') {
     calculator.clear(event.key);
     calculator.updateDisplay();
-
-  } 
-
-  
+  }  
 });
 
